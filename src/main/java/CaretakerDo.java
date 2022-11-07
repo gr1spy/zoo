@@ -1,3 +1,6 @@
+/**
+ * Действия наблюдателя Caretaker
+ */
 public interface CaretakerDo {
 
     /**
@@ -31,12 +34,7 @@ public interface CaretakerDo {
     void changeDay();
 
     /**
-     * Добавляем нового хищника в зоопарк
+     * Добавляем животных в зоопарк
      */
-    void addPredator(Predators predator);
-
-    /**
-     * Добавляем нового травоядного в зоопарк
-     */
-    void addHerbivorous(Herbivores herbivores);
+    void addAnimal(Caretaker caretaker);
 }

@@ -7,27 +7,36 @@ import java.util.List;
  */
 public class Caretaker implements CaretakerDo {
     public static int dayIs = 0; //Номер дня зоопарка
-    public static Long nextAnimalId = 1L; //Айдишники для животных
     public static Enum<TimeOfDay> time = TimeOfDay.NIGHT; //текущее время дня
     public static List<ArrayList<Zoo>> dayInZoo = new ArrayList<>();
-    public HashMap<Long, Animals> animalList = new HashMap<>();
+    public HashMap<Long, Animal> animalList = new HashMap<>();
     public List<Long> indexOfPredator = new ArrayList<>();
     public List<Long> indexOfHerbivorous = new ArrayList<>();
 
     public static void main(String[] args) {
         Caretaker caretaker = new Caretaker();
-        caretaker.addPredator(new Predators("Тигр", Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
-        caretaker.addPredator(new Predators("Лев", Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
-        caretaker.addHerbivorous(new Herbivores("Корова", Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
-        caretaker.changeTime();
-        caretaker.changeTime();
-        caretaker.startFeedPredator();
+        caretaker.addAnimal(caretaker);
         caretaker.changeTime();
         caretaker.changeTime();
         caretaker.startFeedHerbivorous();
         caretaker.startFeedPredator();
         caretaker.changeTime();
         caretaker.makeThunder();
+    }
+
+    @Override
+    public void addAnimal(Caretaker caretaker) {
+        AnimalParser parser = new AnimalParser();
+        List<Animal> animalListNow = parser.parse();
+        for (Animal animal :
+                animalListNow) {
+            caretaker.animalList.put(animal.getAnimalId(), animal);
+            if (animal.isPredator) {
+                caretaker.indexOfPredator.add(animal.getAnimalId());
+            } else {
+                caretaker.indexOfHerbivorous.add(animal.getAnimalId());
+            }
+        }
     }
 
     @Override
@@ -58,9 +67,9 @@ public class Caretaker implements CaretakerDo {
 
     public void endFeedPredators() {
         boolean herbivorousNotHungry = Boolean.TRUE;
-        for (Long ID:
+        for (Long ID :
                 indexOfHerbivorous) {
-            if (animalList.get(ID).getNoise()){
+            if (animalList.get(ID).getNoise()) {
                 herbivorousNotHungry = Boolean.FALSE;
             }
         }
@@ -210,25 +219,4 @@ public class Caretaker implements CaretakerDo {
         }
     }
 
-    @Override
-    public void addPredator(Predators predator) {
-        animalList.put(getUniqId(), predator);
-        indexOfPredator.add(getUniqId());
-        setUniqId(getUniqId() + 1);
-    }
-
-    @Override
-    public void addHerbivorous(Herbivores herbivores) {
-        animalList.put(getUniqId(), herbivores);
-        indexOfHerbivorous.add(getUniqId());
-        setUniqId(getUniqId() + 1);
-    }
-
-    public Long getUniqId() {
-        return nextAnimalId;
-    }
-
-    public void setUniqId(Long uniqId) {
-        Caretaker.nextAnimalId = uniqId;
-    }
 }

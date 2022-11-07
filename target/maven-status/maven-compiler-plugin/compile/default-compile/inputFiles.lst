@@ -1,12 +1,8 @@
 /home/g/IdeaProjects/Zoo/Zoo/src/main/java/Zoo.java
 /home/g/IdeaProjects/Zoo/Zoo/src/main/java/CaretakerDo.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Day.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/TimeOfDay.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Animals.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/AnimalDo.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/ZooDo.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Herbivores.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/HerbivoresIsNoising.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Predators.java
-/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Today.java
+/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Herbivore.java
+/home/g/IdeaProjects/Zoo/Zoo/src/main/java/AnimalParser.java
+/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Predator.java
+/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Time/TimeOfDay.java
+/home/g/IdeaProjects/Zoo/Zoo/src/main/java/Animal.java
 /home/g/IdeaProjects/Zoo/Zoo/src/main/java/Caretaker.java
