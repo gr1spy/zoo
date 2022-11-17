@@ -22,7 +22,8 @@ public class Herb extends Animal implements IObserver {
         super(id, isPredator, kindOfAnimal, noise, hungry, sleep);
     }
 
-    public Herb() {}
+    public Herb() {
+    }
 
     @Override
     public void update() {
@@ -32,15 +33,12 @@ public class Herb extends Animal implements IObserver {
         if (localZoo.isThunderNow()) {
             this.setNoise(true);
             this.setSleep(false);
-            localZoo.setNoisingNow(true);
+            this.human.checkValueZoo();
         }
 
         //Когда надо спать
-        if (localZoo.isNightNow() && !this.isSleep()) {    //если ночь и я не сплю
-            if (this.human.everyOneSleeping()) {
-                this.setSleep(true);
-                localZoo.setNoisingNow(false);
-            }
+        if (localZoo.isNightNow() && !this.isSleep() && !localZoo.isNoisingNow()) {    //если ночь и я не сплю
+            this.setSleep(true);
         }
 
         //Когда надо просыпаться

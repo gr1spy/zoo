@@ -1,12 +1,10 @@
 package Observers.Human;
 
-import Observers.Animal.Herb;
-import Observers.Animal.Predator;
+import Observers.Animal.Animal;
 
 public interface IHuman {
 
-    void subscribe(Predator predator);
-    void subscribe(Herb herb);
+    void subscribe(Animal animal);
     void feedAnimal(Long id);
 
 }

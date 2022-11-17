@@ -26,8 +26,6 @@ public class Animal implements AnimalImpl, IObserver {
     public Animal() {
     }
 
-    @Override
-    public void update(){}
 
     public Long getId() {
         return id;
@@ -79,7 +77,7 @@ public class Animal implements AnimalImpl, IObserver {
 
     @Override
     public String toString() {
-        return  "id=" + id +
+        return "id=" + id +
                 ", predator=" + predator +
                 ", kindOfAnimal='" + kindOfAnimal + '\'' +
                 ", noise=" + noise +
@@ -88,4 +86,8 @@ public class Animal implements AnimalImpl, IObserver {
                 '}' + "\n";
     }
 
+    @Override
+    public void update() {
+
+    }
 }

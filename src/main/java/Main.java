@@ -1,19 +1,12 @@
 import JsonParser.Parser;
-import Observers.Animal.Animal;
-import Observers.Animal.Predator;
 import Observers.Human.Human;
 import Object.Zoo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         //Объект зоопарка, который будет передаваться во все классы
         Zoo zoo = new Zoo();
-
-        //Парсим JSON, добавляем животных в подписчики
         Human human = new Human(zoo);
 
         Parser parser = new Parser();
@@ -23,7 +16,12 @@ public class Main {
 
         zoo.setNightNow(false);
 
-       human.feedAnimal(1L);  //айдишник дивотного, которого кормим
+        //Кормим животных
+        for (Long i = 1L; i <= 11L; i++) {
+            human.feedAnimal(i);
+        }
+
+        zoo.setNightNow(true);
 
     }
 }

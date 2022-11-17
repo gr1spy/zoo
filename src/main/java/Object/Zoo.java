@@ -1,6 +1,5 @@
 package Object;
 
-import Observers.Animal.Animal;
 import Observers.Human.Human;
 
 import java.util.ArrayList;
@@ -44,7 +43,6 @@ public class Zoo implements IObservable {
     public void setThunderNow(boolean thunderNow) {
         this.thunderNow = thunderNow;
         humanList.get(0).update();
-        this.thunderNow = false;
     }
 
     public boolean isEatingNow() {
@@ -53,7 +51,6 @@ public class Zoo implements IObservable {
 
     public void setEatingNow(boolean eatingNow) {
         this.eatingNow = eatingNow;
-        humanList.get(0).update();
     }
 
     public boolean isNightNow() {

@@ -11,37 +11,34 @@ import java.util.Arrays;
 import java.util.List;
 
 import Observers.Animal.Animal;
-import Object.Zoo;
 
 /**
  * Парсер from Json to Object "Observers.Animal"
  */
 public class Parser {
 
-    private List<Predator> predatorsList = new ArrayList<>();
-    private List<Herb> herbsList = new ArrayList<>();
+    private List<Animal> parseAnimalList = new ArrayList<>();
 
     String pathJSONFile = "src/main/resources/animals.json";
     File jsonFile = new File(pathJSONFile);
 
     public void parse(Human human) {
         ObjectMapper mapper = new ObjectMapper();
-        List<Animal> animalList = new ArrayList<>();
+        List<Animal> buffered = new ArrayList<>();
         try {
-            animalList = Arrays.asList(mapper.readValue(jsonFile, Animal[].class));
+            buffered = Arrays.asList(mapper.readValue(jsonFile, Animal[].class));
         } catch (Exception e) {
             System.out.println("Parsing error: " + e.toString());
         }
 
-        for (Animal animal : animalList) {
+        for (Animal animal : buffered) {
             if (animal.isPredator()) {
-                predatorsList.add(getPredator(animal, human));  //отправляем Animal, получаем Predator
+                parseAnimalList.add(getPredator(animal, human));
             } else {
-                herbsList.add(getHerb(animal, human));
+                parseAnimalList.add(getHerb(animal, human));
             }
         }
-        human.setHerbsSub(herbsList);
-        human.setPredatorsSub(predatorsList);
+        human.setAnimalList(parseAnimalList);
     }
 
     public Predator getPredator(Animal animal, Human human) {
@@ -68,19 +65,11 @@ public class Parser {
         return result;
     }
 
-    public List<Predator> getPredatorsList() {
-        return predatorsList;
+    public List<Animal> getParseAnimalList() {
+        return parseAnimalList;
     }
 
-    public void setPredatorsList(List<Predator> predatorsList) {
-        this.predatorsList = predatorsList;
-    }
-
-    public List<Herb> getHerbsList() {
-        return herbsList;
-    }
-
-    public void setHerbsList(List<Herb> herbsList) {
-        this.herbsList = herbsList;
+    public void setParseAnimalList(List<Animal> parseAnimalList) {
+        this.parseAnimalList = parseAnimalList;
     }
 }

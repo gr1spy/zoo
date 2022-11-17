@@ -1,10 +1,9 @@
 package Observers.Human;
 
+import Observers.Animal.Animal;
 import Observers.IObserver;
 import Object.IObservable;
 import Object.Zoo;
-import Observers.Animal.Predator;
-import Observers.Animal.Herb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,7 @@ import java.util.List;
 public class Human implements IObservable, IObserver, IHuman {
 
     private final Zoo zoo;
-    private List<Predator> predatorsSub = new ArrayList<>();
-    private List<Herb> herbsSub = new ArrayList<>();
+    private List<Animal> animalList = new ArrayList<>();
 
     public Human(Zoo zoo) {
         this.zoo = zoo;
@@ -24,44 +22,75 @@ public class Human implements IObservable, IObserver, IHuman {
 
     @Override
     public void notifyPredator() {
-        for (Predator predator : predatorsSub) {
-            predator.update();
+        for (Animal animal : animalList) {
+            if (animal.isPredator()) {
+                animal.update();
+            }
         }
     }
 
     @Override
     public void notifyHerb() {
-        for (Herb herb : herbsSub) {
-            herb.update();
+        for (Animal animal : animalList) {
+            if (!animal.isPredator()) {
+                animal.update();
+            }
         }
     }
 
     public void notifyAllOfAnimal() {
-        for (Predator predator : predatorsSub) {
-            predator.update();
-        }
-        for (Herb herb : herbsSub) {
-            herb.update();
+        for (Animal animal : animalList) {
+            animal.update();
         }
     }
 
-
+    /**
+     * Проверка на то, что все спят
+     */
     public boolean everyOneSleeping() {
         boolean allSleep = true; //все спят
-        for (Predator predator :
-                predatorsSub) {
-            if (!predator.isSleep()) {
-                allSleep = false;
-            }
-        }
-
-        for (Herb herb :
-                herbsSub) {
-            if (!herb.isSleep()) {
+        for (Animal animal : animalList) {
+            if (!animal.isSleep()) {
                 allSleep = false;
             }
         }
         return allSleep;
+    }
+
+    public void checkValueZoo() {
+        if (this.zoo.isNoisingNow()) {
+            boolean noise = false;
+            for (Animal a : animalList) {
+                if (a.isNoise()) {
+                    noise = true;
+                }
+            }
+            if (!noise) {
+                this.zoo.setNoisingNow(false);
+            }
+        } else if (!this.zoo.isNoisingNow()) {
+            boolean noise = true;
+            for (Animal a : animalList) {
+                if (a.isNoise()) {
+                    noise = false;
+                }
+            }
+            if (!noise) {
+                this.zoo.setNoisingNow(true);
+            }
+        }
+        if (this.zoo.isThunderNow()) {
+            boolean allAcceptThunder = true;
+            for (Animal a : animalList) {
+                if (!a.isNoise() && a.isSleep()) {
+                    allAcceptThunder = false;
+                }
+            }
+            if (allAcceptThunder) {
+                this.zoo.setThunderNow(false);
+            }
+
+        }
     }
 
     @Override
@@ -69,12 +98,8 @@ public class Human implements IObservable, IObserver, IHuman {
         notifyAllOfAnimal();
     }
 
-    public void subscribe(Predator predator) {
-        predatorsSub.add(predator);
-    }
-
-    public void subscribe(Herb herb) {
-        herbsSub.add(herb);
+    public void subscribe(Animal animal) {
+        animalList.add(animal);
     }
 
     /**
@@ -85,22 +110,17 @@ public class Human implements IObservable, IObserver, IHuman {
     @Override
     public void feedAnimal(Long id) {
         this.zoo.setEatingNow(true);    //уведомляем хищников, что идет кормешка
-        for (Herb herb : herbsSub) {
-            if (herb.getId().equals(id)) {
-                herb.setNoise(false);
-                herb.setHungry(false);
-                herb.setSleep(false);
+        notifyPredator();
+        for (Animal animal : animalList) {
+            if (animal.getId().equals(id)) {
+                animal.setNoise(false);
+                animal.setHungry(false);
+                animal.setSleep(false);
+                this.zoo.setNoisingNow(true);
             }
         }
-        for (Predator predator : predatorsSub) {
-            if (predator.getId().equals(id)) {
-                predator.setNoise(false);
-                predator.setHungry(false);
-                predator.setSleep(false);
-            }
-        }
-
         this.zoo.setEatingNow(false);   //Покормили
+        checkValueZoo();
     }
 
     @Override
@@ -115,19 +135,11 @@ public class Human implements IObservable, IObserver, IHuman {
         return this.zoo;
     }
 
-    public List<Predator> getPredatorsSub() {
-        return predatorsSub;
+    public List<Animal> getAnimalList() {
+        return animalList;
     }
 
-    public void setPredatorsSub(List<Predator> predatorsSub) {
-        this.predatorsSub = predatorsSub;
-    }
-
-    public List<Herb> getHerbsSub() {
-        return herbsSub;
-    }
-
-    public void setHerbsSub(List<Herb> herbsSub) {
-        this.herbsSub = herbsSub;
+    public void setAnimalList(List<Animal> animalList) {
+        this.animalList = animalList;
     }
 }

@@ -40,22 +40,19 @@ public class Predator extends Animal implements IObserver {
         }
 
         //Когда надо спать
-        if (localZoo.isNightNow() && !this.isSleep()) {    //если ночь
-            if (this.human.everyOneSleeping()) {
-                this.setSleep(true);
-                localZoo.setNoisingNow(false);
-            }
+        if (localZoo.isNightNow() && !this.isSleep() && !localZoo.isNoisingNow()) {    //если ночь и никто не шумит
+            this.setSleep(true);
         }
 
         //Если гремит гром
         if (localZoo.isThunderNow()) {
             this.setNoise(true);
             this.setSleep(false);
-            localZoo.setNoisingNow(true);
+            this.human.checkValueZoo();
         }
 
         //Если кто-то шумит в зоопарке. Например, кормят травоядных (EatingNow = true)
-        if (localZoo.isNoisingNow() && !localZoo.isNightNow() && !localZoo.isThunderNow()) {
+        if (localZoo.isEatingNow() && this.isHungry()) {
             this.setNoise(true);
         }
 
