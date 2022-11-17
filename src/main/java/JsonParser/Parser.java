@@ -1,3 +1,4 @@
+package JsonParser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -6,15 +7,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Observers.Animal.Animal;
+import Object.Zoo;
+
 /**
- * Парсер from Json to Object "Animal"
+ * Парсер from Json to Object "Observers.Animal"
  */
-public class AnimalParser {
+public class Parser {
 
     String pathJSONFile = "src/main/resources/animals.json";
     File jsonFile = new File(pathJSONFile);
 
     public List<Animal> parse() {
+
 
         ObjectMapper mapper = new ObjectMapper();
         List<Animal> animalList = new ArrayList<>();

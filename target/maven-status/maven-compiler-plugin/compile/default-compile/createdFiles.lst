@@ -1,0 +1,10 @@
+Main.class
+Animal\AnimalImpl.class
+Animal\Animal.class
+Animal\Predator.class
+Observer\Human.class
+Object\Zoo.class
+JsonParser\Parser.class
+Animal\Herb.class
+Animal\Subscriber.class
+Observer\Publisher.class

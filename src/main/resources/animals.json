@@ -1,0 +1,78 @@
+[{
+	"id": 1,
+	"predator": "false",
+	"kindOfAnimal":"Зебра",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 2,
+	"predator": "false",
+	"kindOfAnimal":"Зебра",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 3,
+	"predator": "false",
+	"kindOfAnimal":"Зебра",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 4,
+	"predator": "false",
+	"kindOfAnimal":"Слон",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 5,
+	"predator": "false",
+	"kindOfAnimal":"Слон",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 6,
+	"predator": "true",
+	"kindOfAnimal":"Медведь",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 7,
+	"predator": "true",
+	"kindOfAnimal":"Медведь",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 8,
+	"predator": "true",
+	"kindOfAnimal":"Лев",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 9,
+	"predator": "true",
+	"kindOfAnimal":"Лев",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 10,
+	"predator": "true",
+	"kindOfAnimal":"Лев",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}, {
+	"id": 11,
+	"predator": "true",
+	"kindOfAnimal":"Лев",
+	"noise": "false",
+	"hungry": "false",
+	"sleep": "false"
+}]
