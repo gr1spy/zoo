@@ -6,9 +6,11 @@ import Observers.Human.Human;
 public interface IObservable {
 
     void subscribe(Human o);
-    void subscribe(Animal o);
+
+    void notifyHuman();
+
+    void notifyHerb();
 
     void notifyPredator();
-    void notifyHerb();
 
 }

@@ -1,10 +1,9 @@
 package Object;
 
 import Observers.Animal.Animal;
-import Observers.Animal.Herb;
-import Observers.Animal.Predator;
 import Observers.Human.Human;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,50 +15,17 @@ public class Zoo implements IObservable {
     private boolean eatingNow = false;
     private boolean nightNow = true;
 
-    private List<Animal> animalList;
-    private List<Long> herbeIndex;
-    private List<Long> predatorIndex;
-    private List<Human> humanList;
+    private final List<Human> humanList = new ArrayList<>();
+
+
+    @Override
+    public void notifyHuman() {
+        humanList.get(0).update();
+    }
 
     @Override
     public void subscribe(Human o) {
         humanList.add(o);
-    }
-
-    @Override
-    public void subscribe(Animal o) {
-        animalList.add(o);
-        if (o instanceof Predator) {
-            predatorIndex.add(o.getId());
-        } else if (o instanceof Herb) {
-            herbeIndex.add(o.getId());
-        }
-    }
-
-    @Override
-    public void notifyPredator() {
-        for (Long indx :
-                predatorIndex) {
-            for (Animal a :
-                    animalList) {
-                if (a.getId().equals(indx)) {
-                    a.update();
-                }
-            }
-        }
-    }
-
-    @Override
-    public void notifyHerb() {
-        for (Long indx :
-                herbeIndex) {
-            for (Animal a :
-                    animalList) {
-                if (a.getId().equals(indx)) {
-                    a.update();
-                }
-            }
-        }
     }
 
     public boolean isNoisingNow() {
@@ -68,6 +34,7 @@ public class Zoo implements IObservable {
 
     public void setNoisingNow(boolean noisingNow) {
         this.noisingNow = noisingNow;
+        humanList.get(0).update();
     }
 
     public boolean isThunderNow() {
@@ -76,6 +43,8 @@ public class Zoo implements IObservable {
 
     public void setThunderNow(boolean thunderNow) {
         this.thunderNow = thunderNow;
+        humanList.get(0).update();
+        this.thunderNow = false;
     }
 
     public boolean isEatingNow() {
@@ -84,6 +53,7 @@ public class Zoo implements IObservable {
 
     public void setEatingNow(boolean eatingNow) {
         this.eatingNow = eatingNow;
+        humanList.get(0).update();
     }
 
     public boolean isNightNow() {
@@ -92,17 +62,15 @@ public class Zoo implements IObservable {
 
     public void setNightNow(boolean nightNow) {
         this.nightNow = nightNow;
+        humanList.get(0).update();
     }
 
-    public List<Animal> getAnimalList() {
-        return animalList;
+    @Override
+    public void notifyHerb() {
     }
 
-    public List<Long> getHerbeIndex() {
-        return herbeIndex;
+    @Override
+    public void notifyPredator() {
     }
 
-    public List<Long> getPredatorIndex() {
-        return predatorIndex;
-    }
 }

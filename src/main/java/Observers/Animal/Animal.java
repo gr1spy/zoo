@@ -3,9 +3,9 @@ package Observers.Animal;
 import Object.Zoo;
 import Observers.IObserver;
 
-public class Animal implements AnimalImpl, IObserver {
 
-    private Zoo zoo;
+//todo сделать класс абстрактным
+public class Animal implements AnimalImpl, IObserver {
 
     private Long id;
     private Boolean predator;
@@ -14,17 +14,13 @@ public class Animal implements AnimalImpl, IObserver {
     private Boolean hungry = false;
     private Boolean sleep = false;
 
-    public Animal(Long id, boolean isPredator, String kindOfAnimal, boolean noise, boolean hungry, boolean sleep) {
+    public Animal(Long id, boolean predator, String kindOfAnimal, boolean noise, boolean hungry, boolean sleep) {
         this.id = id;
-        this.predator = isPredator;
+        this.predator = predator;
         this.kindOfAnimal = kindOfAnimal;
         this.noise = noise;
         this.hungry = hungry;
         this.sleep = sleep;
-    }
-
-    public Animal(Zoo zoo) {
-        this.zoo = zoo;
     }
 
     public Animal() {
@@ -83,8 +79,7 @@ public class Animal implements AnimalImpl, IObserver {
 
     @Override
     public String toString() {
-        return "Observers.Animal{" +
-                "id=" + id +
+        return  "id=" + id +
                 ", predator=" + predator +
                 ", kindOfAnimal='" + kindOfAnimal + '\'' +
                 ", noise=" + noise +
@@ -92,4 +87,5 @@ public class Animal implements AnimalImpl, IObserver {
                 ", sleep=" + sleep +
                 '}' + "\n";
     }
+
 }

@@ -1,5 +1,6 @@
 import JsonParser.Parser;
 import Observers.Animal.Animal;
+import Observers.Animal.Predator;
 import Observers.Human.Human;
 import Object.Zoo;
 
@@ -12,22 +13,17 @@ public class Main {
         //Объект зоопарка, который будет передаваться во все классы
         Zoo zoo = new Zoo();
 
-        //Парсим JSON
-        Parser parser = new Parser();
-        List<Animal> animals = new ArrayList<>(parser.parse());
-
-        //Добавляем животных в подписчики
-        for (Animal o :
-                animals) {
-            o = new Animal(zoo);
-            zoo.subscribe(o);
-        }
-
-        //Добавляем человека в подписчики
+        //Парсим JSON, добавляем животных в подписчики
         Human human = new Human(zoo);
+
+        Parser parser = new Parser();
+        parser.parse(human);
+
         zoo.subscribe(human);
 
-        human.toEatAnimal(1L);  //айдишник дивотного, которого кормим
+        zoo.setNightNow(false);
+
+       human.feedAnimal(1L);  //айдишник дивотного, которого кормим
 
     }
 }
