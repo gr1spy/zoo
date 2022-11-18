@@ -13,7 +13,7 @@ import java.util.List;
 import Observers.Animal.Animal;
 
 /**
- * Парсер from Json to List<Animal>
+ * Парсер from Json to Список "Animal"
  */
 public class Parser {
 

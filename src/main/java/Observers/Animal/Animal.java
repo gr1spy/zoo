@@ -5,7 +5,7 @@ import Observers.IObserver;
 
 
 /**
- * Класс-родитель для классов Herb & Predator
+ * Класс-родитель для классов Herb и Predator
  */
 public class Animal implements IObserver {
 
@@ -16,6 +16,15 @@ public class Animal implements IObserver {
     private Boolean hungry = false;
     private Boolean sleep = false;
 
+    /**
+     * Конструктор для парсера
+     * @param id
+     * @param predator
+     * @param kindOfAnimal
+     * @param noise
+     * @param hungry
+     * @param sleep
+     */
     public Animal(Long id, boolean predator, String kindOfAnimal, boolean noise, boolean hungry, boolean sleep) {
         this.id = id;
         this.predator = predator;
@@ -25,6 +34,9 @@ public class Animal implements IObserver {
         this.sleep = sleep;
     }
 
+    /**
+     * Констров без параметров
+     */
     public Animal() {
     }
 
@@ -33,6 +45,10 @@ public class Animal implements IObserver {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
