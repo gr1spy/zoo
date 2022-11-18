@@ -4,6 +4,9 @@ import Object.Zoo;
 import Observers.Human.Human;
 import Observers.IObserver;
 
+/**
+ * Класс "Травоядное", наблюдает за объектом Human
+ */
 public class Herb extends Animal implements IObserver {
 
     private Human human;

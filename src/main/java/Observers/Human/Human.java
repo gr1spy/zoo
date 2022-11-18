@@ -20,7 +20,9 @@ public class Human implements IObservable, IObserver, IHuman {
         this.zoo = zoo;
     }
 
-    @Override
+    /**
+     * Уведомляет хищников, когда происходит какое-либо изменение
+     */
     public void notifyPredator() {
         for (Animal animal : animalList) {
             if (animal.isPredator()) {
@@ -29,7 +31,9 @@ public class Human implements IObservable, IObserver, IHuman {
         }
     }
 
-    @Override
+    /**
+     * Уведомляет травоядных, когда происходит какое-либо изменение
+     */
     public void notifyHerb() {
         for (Animal animal : animalList) {
             if (!animal.isPredator()) {
@@ -38,6 +42,9 @@ public class Human implements IObservable, IObserver, IHuman {
         }
     }
 
+    /**
+     * Уведомляет хищников и травоядных, когда происходит какое-либо изменение
+     */
     public void notifyAllOfAnimal() {
         for (Animal animal : animalList) {
             animal.update();
@@ -57,6 +64,9 @@ public class Human implements IObservable, IObserver, IHuman {
         return allSleep;
     }
 
+    /**
+     * Проверяем соответствие состояние зоопарка к состоянию животных в зоопарке
+     */
     public void checkValueZoo() {
         if (this.zoo.isNoisingNow()) {
             boolean noise = false;
@@ -102,11 +112,6 @@ public class Human implements IObservable, IObserver, IHuman {
         animalList.add(animal);
     }
 
-    /**
-     * Надсмоторщик кормит животного
-     *
-     * @param id - животное, которое кормим
-     */
     @Override
     public void feedAnimal(Long id) {
         this.zoo.setEatingNow(true);    //уведомляем хищников, что идет кормешка
@@ -131,6 +136,9 @@ public class Human implements IObservable, IObserver, IHuman {
     public void notifyHuman() {
     }
 
+    /**
+     * @return Получаем объект текущего зоопарка
+     */
     public Zoo getZoo() {
         return this.zoo;
     }

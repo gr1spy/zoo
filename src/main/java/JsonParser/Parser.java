@@ -13,7 +13,7 @@ import java.util.List;
 import Observers.Animal.Animal;
 
 /**
- * Парсер from Json to Object "Observers.Animal"
+ * Парсер from Json to List<Animal>
  */
 public class Parser {
 
@@ -22,6 +22,11 @@ public class Parser {
     String pathJSONFile = "src/main/resources/animals.json";
     File jsonFile = new File(pathJSONFile);
 
+    /**
+     * Основная функция парсинга
+     *
+     * @param human передаем текущего наблюдателя в класс, чтобы была взаимосвязь "зоопарк" -> "наблюдатель" -> животные
+     */
     public void parse(Human human) {
         ObjectMapper mapper = new ObjectMapper();
         List<Animal> buffered = new ArrayList<>();
@@ -41,6 +46,13 @@ public class Parser {
         human.setAnimalList(parseAnimalList);
     }
 
+    /**
+     * Animal -> Predator
+     *
+     * @param animal передаем Animal
+     * @param human  передаем Human для привязки к конкретному объекту human
+     * @return возвращаем объект Predator
+     */
     public Predator getPredator(Animal animal, Human human) {
         Predator newPredator = new Predator();
         newPredator.setId(animal.getId());
@@ -53,6 +65,13 @@ public class Parser {
         return result;
     }
 
+    /**
+     * Animal -> Herbivorous
+     *
+     * @param animal передаем Animal
+     * @param human  передаем Human для привязки к конкретному объекту
+     * @return Herbivorous
+     */
     public Herb getHerb(Animal animal, Human human) {
         Herb newHerb = new Herb();
         newHerb.setId(animal.getId());
@@ -65,10 +84,19 @@ public class Parser {
         return result;
     }
 
+    /**
+     * Возвращаем List<Animal> с Predator & Herb
+     *
+     * @return List<Animal> с Predator & Herb
+     */
     public List<Animal> getParseAnimalList() {
         return parseAnimalList;
     }
 
+    /**
+     * List<Animal> позволяет задать новый список животных
+     * * @param parseAnimalList
+     */
     public void setParseAnimalList(List<Animal> parseAnimalList) {
         this.parseAnimalList = parseAnimalList;
     }

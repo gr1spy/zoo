@@ -1,6 +1,9 @@
 package Observers;
 
 public interface IObserver {
-    //Уведомление для животных
+
+    /**
+     * Уведомление для животных
+     */
     void update();
 }

@@ -4,6 +4,9 @@ import Object.Zoo;
 import Observers.Human.Human;
 import Observers.IObserver;
 
+/**
+ * Класс "Хищник" наблюдает за Human
+ */
 public class Predator extends Animal implements IObserver {
 
     private Human human;

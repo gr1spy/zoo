@@ -4,8 +4,10 @@ import Object.Zoo;
 import Observers.IObserver;
 
 
-//todo сделать класс абстрактным
-public class Animal implements AnimalImpl, IObserver {
+/**
+ * Класс-родитель для классов Herb & Predator
+ */
+public class Animal implements IObserver {
 
     private Long id;
     private Boolean predator;
