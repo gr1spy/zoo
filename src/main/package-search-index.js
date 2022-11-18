@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"JsonParser"},{"l":"Object"},{"l":"Observers"},{"l":"Observers.Animal"},{"l":"Observers.Human"}];updateSearchResults();
