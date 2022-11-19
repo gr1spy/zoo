@@ -1,8 +1,8 @@
-package Observers.Animal;
+package ru.zoo.Observers.Animal;
 
-import Object.Zoo;
-import Observers.Human.Human;
-import Observers.IObserver;
+import ru.zoo.Object.Zoo;
+import ru.zoo.Observers.Human.Human;
+import ru.zoo.Observers.IObserver;
 
 /**
  * Класс "Хищник" наблюдает за Human
@@ -55,7 +55,7 @@ public class Predator extends Animal implements IObserver {
         }
 
         //Если кто-то шумит в зоопарке. Например, кормят травоядных (EatingNow = true)
-        if (localZoo.isEatingNow() && this.isHungry()) {
+        if (localZoo.isEatingNow() && localZoo.isNoisingNow()) {
             this.setNoise(true);
         }
 

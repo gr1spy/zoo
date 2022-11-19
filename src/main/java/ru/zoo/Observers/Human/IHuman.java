@@ -1,6 +1,7 @@
-package Observers.Human;
+package ru.zoo.Observers.Human;
 
-import Observers.Animal.Animal;
+
+import ru.zoo.Observers.Animal.Animal;
 
 public interface IHuman {
 

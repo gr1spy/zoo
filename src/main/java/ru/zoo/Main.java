@@ -1,6 +1,9 @@
-import JsonParser.Parser;
-import Observers.Human.Human;
-import Object.Zoo;
+package ru.zoo;
+
+import ru.zoo.JsonParser.Parser;
+
+import ru.zoo.Object.Zoo;
+import ru.zoo.Observers.Human.Human;
 
 /**
  * Управляющий класс

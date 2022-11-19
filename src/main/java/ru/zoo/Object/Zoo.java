@@ -1,6 +1,6 @@
-package Object;
+package ru.zoo.Object;
 
-import Observers.Human.Human;
+import ru.zoo.Observers.Human.Human;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +81,7 @@ public class Zoo implements IObservable {
      */
     public void setEatingNow(boolean eatingNow) {
         this.eatingNow = eatingNow;
+        this.setNoisingNow(true);
     }
 
     /**

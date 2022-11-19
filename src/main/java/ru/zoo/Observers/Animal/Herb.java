@@ -1,8 +1,8 @@
-package Observers.Animal;
+package ru.zoo.Observers.Animal;
 
-import Object.Zoo;
-import Observers.Human.Human;
-import Observers.IObserver;
+import ru.zoo.Object.Zoo;
+import ru.zoo.Observers.Human.Human;
+import ru.zoo.Observers.IObserver;
 
 /**
  * Класс "Травоядное", наблюдает за объектом Human

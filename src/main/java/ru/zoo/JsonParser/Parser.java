@@ -1,16 +1,17 @@
-package JsonParser;
+package ru.zoo.JsonParser;
 
-import Observers.Animal.Herb;
-import Observers.Animal.Predator;
-import Observers.Human.Human;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.zoo.Observers.Animal.Animal;
+import ru.zoo.Observers.Animal.Herb;
+import ru.zoo.Observers.Animal.Predator;
+import ru.zoo.Observers.Human.Human;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-import Observers.Animal.Animal;
 
 /**
  * Парсер from Json to Список "Animal"
@@ -19,8 +20,9 @@ public class Parser {
 
     private List<Animal> parseAnimalList = new ArrayList<>();
 
-    String pathJSONFile = "src/main/resources/animals.json";
-    File jsonFile = new File(pathJSONFile);
+    //String pathJSONFile = "src/main/resources/animals.json";
+    String path = Objects.requireNonNull(getClass().getResource("/animals.json")).getPath();
+    File jsonFile = new File(path);
 
     /**
      * Основная функция парсинга
@@ -28,7 +30,11 @@ public class Parser {
      * @param human передаем текущего наблюдателя в класс, чтобы была взаимосвязь "зоопарк" -> "наблюдатель" -> животные
      */
     public void parse(Human human) {
+
+
         ObjectMapper mapper = new ObjectMapper();
+
+
         List<Animal> buffered = new ArrayList<>();
         try {
             buffered = Arrays.asList(mapper.readValue(jsonFile, Animal[].class));

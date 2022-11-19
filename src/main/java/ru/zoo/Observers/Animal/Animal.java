@@ -1,7 +1,6 @@
-package Observers.Animal;
+package ru.zoo.Observers.Animal;
 
-import Object.Zoo;
-import Observers.IObserver;
+import ru.zoo.Observers.IObserver;
 
 
 /**
@@ -18,6 +17,7 @@ public class Animal implements IObserver {
 
     /**
      * Конструктор для парсера
+     *
      * @param id
      * @param predator
      * @param kindOfAnimal
@@ -46,7 +46,6 @@ public class Animal implements IObserver {
     }
 
     /**
-     *
      * @param id
      */
     public void setId(Long id) {

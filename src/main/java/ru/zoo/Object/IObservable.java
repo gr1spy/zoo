@@ -1,7 +1,6 @@
-package Object;
+package ru.zoo.Object;
 
-import Observers.Animal.Animal;
-import Observers.Human.Human;
+import ru.zoo.Observers.Human.Human;
 
 /**
  * Интерфейс объекта, который мы наблюдаем

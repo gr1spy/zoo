@@ -1,9 +1,9 @@
-package Observers.Human;
+package ru.zoo.Observers.Human;
 
-import Observers.Animal.Animal;
-import Observers.IObserver;
-import Object.IObservable;
-import Object.Zoo;
+import ru.zoo.Object.IObservable;
+import ru.zoo.Object.Zoo;
+import ru.zoo.Observers.Animal.Animal;
+import ru.zoo.Observers.IObserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,15 @@ import java.util.List;
  */
 public class Human implements IObservable, IObserver, IHuman {
 
-    private final Zoo zoo;
+    private Zoo zoo;
     private List<Animal> animalList = new ArrayList<>();
+
 
     public Human(Zoo zoo) {
         this.zoo = zoo;
+    }
+
+    public Human() {
     }
 
     /**
@@ -49,19 +53,6 @@ public class Human implements IObservable, IObserver, IHuman {
         for (Animal animal : animalList) {
             animal.update();
         }
-    }
-
-    /**
-     * Проверка на то, что все спят
-     */
-    public boolean everyOneSleeping() {
-        boolean allSleep = true; //все спят
-        for (Animal animal : animalList) {
-            if (!animal.isSleep()) {
-                allSleep = false;
-            }
-        }
-        return allSleep;
     }
 
     /**
@@ -130,6 +121,7 @@ public class Human implements IObservable, IObserver, IHuman {
 
     @Override
     public void subscribe(Human o) {
+
     }
 
     @Override
